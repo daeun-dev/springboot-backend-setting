@@ -9,7 +9,7 @@ import com.doosan.ddxp.api.item.domain.model.Item;
 
 @Mapper
 @Repository
-public interface ItemRepository {
+public interface ItemRepository{
 	
 	List<Item> getItemList();
 
