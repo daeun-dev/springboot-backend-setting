@@ -31,13 +31,13 @@ public class RestController implements ApplicationRunner {
 		String id = "abc123"; 
 		String password="12345";
 		User user = new User(id, password);
-		
-		loginRedisRepository.save(user);
-		
-		Optional<User> findUser = loginRedisRepository.findById(user.getUserId());
-
-		System.out.println(findUser.get().getUserId());
-		System.out.println(findUser.get().getPassword());
+//		
+//		loginRedisRepository.save(user);
+//		
+//		Optional<User> findUser = loginRedisRepository.findById(user.getUserId());
+//
+//		System.out.println(findUser.get().getUserId());
+//		System.out.println(findUser.get().getPassword());
 		
 	}
 }
