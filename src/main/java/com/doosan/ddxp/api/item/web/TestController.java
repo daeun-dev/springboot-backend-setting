@@ -59,7 +59,7 @@ public class TestController {
 		logger.info("AFTER_REDIS : "+result);
 		//loginRedisRepository.save(token);
 		
-		return "DDXP TEST";
+		return result;
 	}
 	
 	@ResponseBody
