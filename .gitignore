@@ -1,7 +1,7 @@
-편집
-선택한 줄이 없습니다.
 HELP.md
 target/**
+bin/**
+
 !target/**.jar
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
@@ -16,6 +16,7 @@ logs/**
 .settings
 .springBeans
 .sts4-cache
+.metadata
 
 ### IntelliJ IDEA ###
 .idea
