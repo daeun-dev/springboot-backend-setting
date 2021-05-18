@@ -1,15 +1,14 @@
 package com.doosan.ddxp.api.item.web;
 
-import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.doosan.ddxp.api.core.config.redis.GsonRedisSerializer;
 import com.doosan.ddxp.api.core.config.secuity.JwtAuthToken;
@@ -23,8 +22,9 @@ public class LoginContoller {
 	
 	Logger logger = LoggerFactory.getLogger(TestController.class);
 	
-	@GetMapping("/login")
-	public void login() {
+	@ResponseBody
+	@GetMapping(path = "/login")
+	public String login() {
 		
 		
 		JwtAuthTokenProvider jwtAuthTokenProvider= new JwtAuthTokenProvider();
@@ -46,6 +46,7 @@ public class LoginContoller {
 		logger.info("AFTER_REDIS : "+result);
 		//loginRedisRepository.save(token);
 		
+		return result;
 		
 	}
 }
