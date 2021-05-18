@@ -30,7 +30,8 @@ public class LoginContoller {
 		JwtAuthTokenProvider jwtAuthTokenProvider= new JwtAuthTokenProvider();
 		JwtAuthToken jwtToken = jwtAuthTokenProvider.createLoginAuthToken();
 		
-		logger.info("TOKEN_VALUE :"+jwtToken.getToken());
+		//logger.info("TOKEN_VALUE :"+jwtToken.getToken());
+		System.out.println("TOKEN_VALUE :"+jwtToken.getToken());
 		redisTemplate.setKeySerializer(new GsonRedisSerializer());
 		redisTemplate.setValueSerializer(new GsonRedisSerializer());
 
