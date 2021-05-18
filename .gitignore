@@ -1,13 +1,6 @@
-<<<<<<< HEAD
 HELP.md
 /target/*
 !/target/*.jar
-=======
-
-HELP.md
-
-!target/**.jar
->>>>>>> 3aa9cc9e3326005facac4e452755b1bf1cbd393d
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
@@ -21,7 +14,6 @@ HELP.md
 .settings
 .springBeans
 .sts4-cache
-bin/**
 
 ### IntelliJ IDEA ###
 .idea
@@ -41,9 +33,5 @@ build/
 
 ### VS Code ###
 .vscode/
-<<<<<<< HEAD
 /bin/
 
-=======
-/target/
->>>>>>> 3aa9cc9e3326005facac4e452755b1bf1cbd393d
