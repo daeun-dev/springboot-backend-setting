@@ -1,4 +1,4 @@
-/*package com.doosan.ddxp.api.core.config;
+package com.doosan.ddxp.api.core.config.redis;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -29,5 +29,5 @@ public class RedisConfig {
 	        redisTemplate.setConnectionFactory(redisConnectionFactory());
 	        return redisTemplate;
 	    }
+    
 }	    
-*/

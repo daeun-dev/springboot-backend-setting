@@ -1,0 +1,5 @@
+node_modules
+npm-debug.log
+docker
+migration
+# .env # 운영 환경에는 배포되지 않도록 설정

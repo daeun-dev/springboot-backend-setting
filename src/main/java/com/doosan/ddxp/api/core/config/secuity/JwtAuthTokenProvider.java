@@ -1,7 +1,6 @@
 package com.doosan.ddxp.api.core.config.secuity;
 
 import java.security.Key;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Value;
 
@@ -24,14 +23,19 @@ public class JwtAuthTokenProvider implements AuthTokenProvider<JwtAuthToken> {
 		this.key = Keys.hmacShaKeyFor(secret.getBytes());
     }
 
-    @Override
+/*    @Override
     public JwtAuthToken createLoginAuthToken(String id) {
     	
     	//권한 조회하는 로직
     	this.role = Role.MASTER;
         return new JwtAuthToken("doosan.ddxp.login", id, new Date(System.currentTimeMillis() + loginExpiredDate), key, role);
-    }
+    } */
 
+    @Override
+    public JwtAuthToken createLoginAuthToken() {
+    	return new JwtAuthToken(key);
+    }
+    
     @Override
     public JwtAuthToken convertAuthToken(String token) {
         return new JwtAuthToken(token, key);

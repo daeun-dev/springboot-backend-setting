@@ -19,17 +19,30 @@ public class JwtAuthToken implements AuthToken<Claims> {
     private final String token;
     private final Key key;
 
-
-
+    //decode용
     JwtAuthToken(String token, Key key) {
         this.token = token;
        //this.key = secretKey;
         this.key = key;
     }
 
+    JwtAuthToken(Key key) {
+    	 this.key = key;
+         this.token = createJwtAuthToken().get();
+    }
+
     JwtAuthToken(String subject, String id, Date expiredDate, Key key, Role role) {
         this.key = key;
         this.token = createJwtAuthToken(subject, id, expiredDate, role).get();
+    }
+
+    private Optional<String> createJwtAuthToken() {
+		
+        var token = Jwts.builder()
+                .signWith(key)
+                .compact();
+
+        return Optional.ofNullable(token);
     }
 
     private Optional<String> createJwtAuthToken(String subject, String id, Date expiredDate, Role role) {
