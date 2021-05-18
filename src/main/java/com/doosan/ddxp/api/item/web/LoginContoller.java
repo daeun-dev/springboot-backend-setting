@@ -23,7 +23,7 @@ public class LoginContoller {
 	
 	Logger logger = LoggerFactory.getLogger(TestController.class);
 	
-	@GetMapping
+	@GetMapping("/Login")
 	public void login() {
 		
 		JwtAuthTokenProvider jwtAuthTokenProvider= new JwtAuthTokenProvider();
