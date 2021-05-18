@@ -36,7 +36,7 @@ public class TestController {
 		List<Item> itemList = itemService.getItemList();
 		int size = itemList.size();
 		logger.info(String.valueOf(size));
-		return "DDXP TEST";
+		return "DDXP TEST!!!dfdf";
 	}
 	
 	@ResponseBody
