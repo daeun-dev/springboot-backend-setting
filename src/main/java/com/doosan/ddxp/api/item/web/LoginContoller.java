@@ -26,15 +26,14 @@ public class LoginContoller {
 	@GetMapping("/login")
 	public void login() {
 		
+		
 		JwtAuthTokenProvider jwtAuthTokenProvider= new JwtAuthTokenProvider();
 		JwtAuthToken jwtToken = jwtAuthTokenProvider.createLoginAuthToken();
 		
+		logger.info("TOKEN_VALUE :"+jwtToken.getToken());
 		redisTemplate.setKeySerializer(new GsonRedisSerializer());
 		redisTemplate.setValueSerializer(new GsonRedisSerializer());
-		
-//		TokenBuilder tokenInfo = Token.builder()
-//								  .id("abc")
-//								  .expiredDate(date);
+
 		
 		redisTemplate.opsForValue().set(jwtToken.getToken(), "abc");
 		redisTemplate.expire(jwtToken.getToken(), 1,TimeUnit.HOURS);
