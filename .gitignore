@@ -1,12 +1,8 @@
-편집
-선택한 줄이 없습니다.
 HELP.md
-target/**
 !target/**.jar
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-logs/**
 
 ### STS ###
 .apt_generated
@@ -35,4 +31,5 @@ build/
 
 ### VS Code ###
 .vscode/
+/bin/
 /target/
