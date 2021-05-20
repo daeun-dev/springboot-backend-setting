@@ -33,9 +33,9 @@ public class TestController {
 		
 		System.out.println("TESTTESTDDXP!!!1");
 		
-		List<Item> itemList = itemService.getItemList();
-		int size = itemList.size();
-		logger.info(String.valueOf(size));
+//		List<Item> itemList = itemService.getItemList();
+//		int size = itemList.size();
+//		logger.info(String.valueOf(size));
 		return "DDXP TEST!!!dfdf";
 	}
 	
