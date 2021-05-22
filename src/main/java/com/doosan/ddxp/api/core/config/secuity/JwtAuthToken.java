@@ -31,9 +31,9 @@ public class JwtAuthToken implements AuthToken<Claims> {
          this.token = createJwtAuthToken().get();
     }
 
-    JwtAuthToken(String subject, String id, Date expiredDate, Key key, Role role) {
+    JwtAuthToken(String subject, String id, Date expiredDate, Key key) {
         this.key = key;
-        this.token = createJwtAuthToken(subject, id, expiredDate, role).get();
+        this.token = createJwtAuthToken(subject, id, expiredDate).get();
     }
 
     private Optional<String> createJwtAuthToken() {
@@ -45,15 +45,14 @@ public class JwtAuthToken implements AuthToken<Claims> {
         return Optional.ofNullable(token);
     }
 
-    private Optional<String> createJwtAuthToken(String subject, String id, Date expiredDate, Role role) {
+    private Optional<String> createJwtAuthToken(String subject, String id, Date expiredDate) {
 		
         var token = Jwts.builder()
         		.setIssuer("doosan.ddxp")								//발급자
     			.setIssuedAt(new Date(System.currentTimeMillis()))		//발급일시
     			.setExpiration(expiredDate)								//토큰 만료일시				
     			.setSubject(subject)									//토큰제목
-                .claim("data", id) 										//계정정보
-                .claim("authorization", role)							//권한정보						
+                .claim("data", id) 										//계정정보				
                 .setExpiration(expiredDate)
                 .signWith(key)
                 .compact();

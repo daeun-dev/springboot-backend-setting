@@ -10,9 +10,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.doosan.ddxp.api.core.config.secuity.JwtAuthToken;
 import com.doosan.ddxp.api.core.config.secuity.JwtAuthTokenProvider;
-import com.doosan.ddxp.api.core.config.secuity.Role;
 
 
 public class LoginInterceptor implements HandlerInterceptor{
@@ -26,17 +24,17 @@ public class LoginInterceptor implements HandlerInterceptor{
 
 	        Optional<String> token = resolveToken(request);
 
-	        if (token.isPresent()) {
-	            JwtAuthToken jwtAuthToken = jwtAuthTokenProvider.convertAuthToken(token.get());
-	            if(jwtAuthToken.validate() & Role.MASTER.getCode().equals(jwtAuthToken.getData().get("authorization"))) {
-	                return true;
-	            }
-	            else {
-//	                throw new CustomAuthenticationException();
-	            }
-	        } else {
-//	            throw new CustomAuthenticationException();
-	        }
+//	        if (token.isPresent()) {
+//	            JwtAuthToken jwtAuthToken = jwtAuthTokenProvider.convertAuthToken(token.get());
+//	            if(jwtAuthToken.validate() & Role.MASTER.getCode().equals(jwtAuthToken.getData().get("authorization"))) {
+//	                return true;
+//	            }
+//	            else {
+////	                throw new CustomAuthenticationException();
+//	            }
+//	        } else {
+////	            throw new CustomAuthenticationException();
+//	        }
 			return false;
 	}
 

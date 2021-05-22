@@ -15,7 +15,7 @@ import com.doosan.ddxp.api.core.config.secuity.JwtAuthToken;
 import com.doosan.ddxp.api.core.config.secuity.JwtAuthTokenProvider;
 
 @Controller
-public class LoginContoller {
+public class LoginController {
 
 	@Autowired
 	private StringRedisTemplate redisTemplate;
@@ -31,7 +31,7 @@ public class LoginContoller {
 		JwtAuthToken jwtToken = jwtAuthTokenProvider.createLoginAuthToken();
 		
 		//logger.info("TOKEN_VALUE :"+jwtToken.getToken());
-		System.out.println("TOKEN_VALUE :"+jwtToken.getToken());
+		System.out.println("TOKEN_VALUE111 :"+jwtToken.getToken());
 		redisTemplate.setKeySerializer(new GsonRedisSerializer());
 		redisTemplate.setValueSerializer(new GsonRedisSerializer());
 
@@ -39,7 +39,7 @@ public class LoginContoller {
 		redisTemplate.opsForValue().set(jwtToken.getToken(), "abc");
 		redisTemplate.expire(jwtToken.getToken(), 1,TimeUnit.HOURS);
 		
-		logger.info("TOKEN_VALUE :"+jwtToken.getToken());
+		logger.info("TOKEN_VALUE222 :"+jwtToken.getToken());
 		
 		String result = redisTemplate.opsForValue().get(jwtToken.getToken());
 	

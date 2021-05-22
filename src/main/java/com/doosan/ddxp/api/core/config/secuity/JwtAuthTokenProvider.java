@@ -11,13 +11,12 @@ import lombok.extern.slf4j.Slf4j;
 public class JwtAuthTokenProvider implements AuthTokenProvider<JwtAuthToken> {
 
     private final Key key;
-    private Role role;
     
-    @Value("${jwt.secret}")
-    private String secret;
+//    @Value("${jwt.secret}")
+    private String secret="dgViIpUMvyUow_g6hvdf_4XxRtcsSFlOW0bcIGTG5OE";
     
-    @Value("${jwt.login.expiredDate}")
-    private int loginExpiredDate;
+//    @Value("${jwt.login.expiredDate}")
+//    private int loginExpiredDate;
 
     public JwtAuthTokenProvider() {
 		this.key = Keys.hmacShaKeyFor(secret.getBytes());

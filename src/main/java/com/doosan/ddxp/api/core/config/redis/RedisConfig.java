@@ -12,11 +12,11 @@ import org.springframework.data.redis.repository.configuration.EnableRedisReposi
 @EnableRedisRepositories
 public class RedisConfig {
 
-	 	@Value("${spring.redis.host}")
-	    private String redisHostName;
+//	 	@Value("${spring.redis.host}")
+	    private String redisHostName="w-awps-di-an2-ecrds-dev-dxp.wimlsn.0001.apn2.cache.amazonaws.com";
 
-	    @Value("${spring.redis.port}")
-	    private int redisPort;
+//	    @Value("${spring.redis.port}")
+	    private int redisPort=6379;
 
 	    @Bean
 	    public RedisConnectionFactory redisConnectionFactory() {
