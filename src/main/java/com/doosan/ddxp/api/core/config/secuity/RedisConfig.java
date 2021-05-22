@@ -1,4 +1,4 @@
-package com.doosan.ddxp.api.core.config.redis;
+package com.doosan.ddxp.api.core.config.secuity;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

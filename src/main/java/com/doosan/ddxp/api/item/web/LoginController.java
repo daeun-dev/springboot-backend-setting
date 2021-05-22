@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.doosan.ddxp.api.core.config.redis.GsonRedisSerializer;
 import com.doosan.ddxp.api.core.config.secuity.JwtAuthToken;
 import com.doosan.ddxp.api.core.config.secuity.JwtAuthTokenProvider;
 
@@ -34,9 +33,7 @@ public class LoginController {
 		System.out.println("TOKEN_VALUE111 :"+jwtToken.getToken());
 		ValueOperations<String, Object> vop = redisTemplate.opsForValue();
 		vop.set(jwtToken.getToken(), "abc");
-//		redisTemplate.setKeySerializer(new GsonRedisSerializer());
-//		redisTemplate.setValueSerializer(new GsonRedisSerializer());
-		//redisTemplate.opsForValue().set(jwtToken.getToken(), "abc");
+		
 		System.out.println("TOKEN_VALUE22222222");
 		redisTemplate.expire(jwtToken.getToken(), 1,TimeUnit.HOURS);
 		
