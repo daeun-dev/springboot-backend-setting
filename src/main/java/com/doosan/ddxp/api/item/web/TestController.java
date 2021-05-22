@@ -1,10 +1,7 @@
 package com.doosan.ddxp.api.item.web;
 
-import java.util.List;
 import java.util.Locale;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -12,8 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.doosan.ddxp.api.core.exception.BadRequestException;
-import com.doosan.ddxp.api.item.domain.model.Item;
-import com.doosan.ddxp.api.item.domain.service.ItemService;
 
 @Controller
 public class TestController {
@@ -22,9 +17,7 @@ public class TestController {
 	private MessageSource messageSource;
 	
 	@Autowired
-	private ItemService itemService;
-
-	Logger logger = LoggerFactory.getLogger(TestController.class);
+	//private ItemService itemService;
 	
 	@ResponseBody
 	@GetMapping(path = "/test")

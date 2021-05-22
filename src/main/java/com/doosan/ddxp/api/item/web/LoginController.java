@@ -20,12 +20,12 @@ public class LoginController {
 	@Autowired
 	private StringRedisTemplate redisTemplate;
 	
-	Logger logger = LoggerFactory.getLogger(TestController.class);
 	
 	@ResponseBody
 	@GetMapping(path = "/login")
 	public String login() {
 		
+		Logger logger = LoggerFactory.getLogger(LoginController.class);
 		
 		JwtAuthTokenProvider jwtAuthTokenProvider= new JwtAuthTokenProvider();
 		JwtAuthToken jwtToken = jwtAuthTokenProvider.createLoginAuthToken();
