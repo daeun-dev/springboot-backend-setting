@@ -14,6 +14,7 @@ import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 import com.doosan.ddxp.api.core.interceptor.LoginInterceptor;
 
 @Configuration
+@EnableWebMvc
 public class WebMvcConfig implements WebMvcConfigurer{
 	
 	@Override

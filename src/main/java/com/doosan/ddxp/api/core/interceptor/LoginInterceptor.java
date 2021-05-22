@@ -22,7 +22,7 @@ public class LoginInterceptor implements HandlerInterceptor{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 
-	        Optional<String> token = resolveToken(request);
+//	        Optional<String> token = resolveToken(request);
 
 //	        if (token.isPresent()) {
 //	            JwtAuthToken jwtAuthToken = jwtAuthTokenProvider.convertAuthToken(token.get());

@@ -30,7 +30,6 @@ public class LoginController {
 		JwtAuthTokenProvider jwtAuthTokenProvider= new JwtAuthTokenProvider();
 		JwtAuthToken jwtToken = jwtAuthTokenProvider.createLoginAuthToken();
 		
-		//logger.info("TOKEN_VALUE :"+jwtToken.getToken());
 		System.out.println("TOKEN_VALUE111 :"+jwtToken.getToken());
 		redisTemplate.setKeySerializer(new GsonRedisSerializer());
 		redisTemplate.setValueSerializer(new GsonRedisSerializer());
@@ -44,7 +43,6 @@ public class LoginController {
 		String result = redisTemplate.opsForValue().get(jwtToken.getToken());
 	
 		logger.info("AFTER_REDIS : "+result);
-		//loginRedisRepository.save(token);
 		
 		return result;
 		
