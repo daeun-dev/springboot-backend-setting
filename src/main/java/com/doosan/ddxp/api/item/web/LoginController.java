@@ -58,7 +58,7 @@ public class LoginController {
 			uri = new URI("https://devapi-dxp.doosaninfracore.com/dxp/main");
 			//uri = new URI("http://www.naver.com");
 			headers = new HttpHeaders();
-			headers.set("Authorization", jwtToken.getToken());
+			headers.add("Authorization", "Bearer "+jwtToken.getToken());
 			headers.setLocation(uri);
 			responseEntity = ResponseEntity.status(HttpStatus.MOVED_PERMANENTLY)
 								.headers(headers)
