@@ -39,10 +39,10 @@ public class TestController {
 	}
 	
 	@ResponseBody
-	@GetMapping(path = "/errorTest")
+	@GetMapping(path = "/errorPage")
 	public void errorTest() throws Exception {
 				
-			throw new BadRequestException("badRequest");
+			throw new BadRequestException("badRequest!!");
 	}
 	
 	@GetMapping(path = "/testPage")

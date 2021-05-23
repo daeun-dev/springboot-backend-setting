@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +26,7 @@ public class LoginController {
 	
 	
 	@GetMapping(path = "/login")
-	public ResponseEntity login() {
+	public ResponseEntity<?> login() {
 		
 		Logger logger = LoggerFactory.getLogger(LoginController.class);
 		
@@ -41,15 +43,23 @@ public class LoginController {
 		
 		String result = (String) vop.get(jwtToken.getToken());
 		System.out.println("AFTER_REDIS : "+result);
+		
+		
 		URI uri = null;
+		HttpHeaders headers = null;
 		try {
 			uri = new URI("https://devapi-dxp.doosaninfracore.com/dxp/test");
+			//uri = new URI("http://www.naver.com");
+			headers = new HttpHeaders();
+			headers.set("Authorization", jwtToken.getToken());
+			headers.setLocation(uri);
+			
 			System.out.println("TOKEN_VALUE3333333");
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
 		
 		//return "redirect:/test";
-		return (ResponseEntity) ResponseEntity.ok().header("Authorization", jwtToken.getToken()).location(uri);
+		return new ResponseEntity<>(headers,HttpStatus.MOVED_PERMANENTLY);
 	}
 }

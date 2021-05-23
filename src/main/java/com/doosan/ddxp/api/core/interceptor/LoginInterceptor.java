@@ -15,12 +15,20 @@ import com.doosan.ddxp.api.core.config.secuity.JwtAuthTokenProvider;
 
 public class LoginInterceptor implements HandlerInterceptor{
 
-    private final JwtAuthTokenProvider jwtAuthTokenProvider = new JwtAuthTokenProvider();
-    private static final String AUTHORIZATION_HEADER = "x-auth-token";
+    private static final String AUTHORIZATION_HEADER = "authorization";
     
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
+		
+		
+		final String token = request.getHeader(AUTHORIZATION_HEADER);
+		if(token != null) {
+			return true;
+		}else {
+			response.sendRedirect("/errorPage");
+			return false;
+		}
 
 //	        Optional<String> token = resolveToken(request);
 
@@ -30,12 +38,11 @@ public class LoginInterceptor implements HandlerInterceptor{
 //	                return true;
 //	            }
 //	            else {
-////	                throw new CustomAuthenticationException();
 //	            }
 //	        } else {
-////	            throw new CustomAuthenticationException();
+
 //	        }
-			return false;
+			
 	}
 
 	@Override
