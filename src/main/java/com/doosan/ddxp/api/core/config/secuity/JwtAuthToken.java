@@ -12,8 +12,7 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 
-@Slf4j
-public class JwtAuthToken implements AuthToken<Claims> {
+public class JwtAuthToken {
 
     @Getter
     private final String token;
@@ -59,42 +58,8 @@ public class JwtAuthToken implements AuthToken<Claims> {
 //
 //        return Optional.ofNullable(token);
 //    }
-    
-    @Override
-    public boolean validate() {
-        return getData() != null;
-    }
-
-//    @Override
-//    public Claims getData() {
-//
-//        try {
-////        	return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody();
-//        } catch (SecurityException e) {
-//            log.info("Invalid JWT signature.");
-////            throw new CustomJwtRuntimeException();
-//        } catch (MalformedJwtException e) {
-//            log.info("Invalid JWT token.");
-////            throw new CustomJwtRuntimeException();
-//        } catch (ExpiredJwtException e) {
-//            log.info("Expired JWT token.");
-////            throw new CustomJwtRuntimeException();
-//        } catch (UnsupportedJwtException e) {
-//            log.info("Unsupported JWT token.");
-////            throw new CustomJwtRuntimeException();
-//        } catch (IllegalArgumentException e) {
-//            log.info("JWT token compact of handler are invalid.");
-////            throw new CustomJwtRuntimeException();
-//        }
-//		return null;
-//    }
 
 
 
-@Override
-public Claims getData() {
-	// TODO Auto-generated method stub
-	return null;
-}
     
 }
