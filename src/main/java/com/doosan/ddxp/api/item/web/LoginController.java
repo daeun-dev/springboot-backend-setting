@@ -2,6 +2,8 @@ package com.doosan.ddxp.api.item.web;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
@@ -33,8 +35,9 @@ public class LoginController {
 		JwtAuthTokenProvider jwtAuthTokenProvider= new JwtAuthTokenProvider();
 		JwtAuthToken jwtToken = jwtAuthTokenProvider.createLoginAuthToken();
 		
+		String id = "ddxp";
 		ValueOperations<String, Object> vop = redisTemplate.opsForValue();
-		vop.set(jwtToken.getToken(), "abc");
+		vop.set(jwtToken.getToken(), id);
 		
 		System.out.println("TOKEN_VALUE111 :"+jwtToken.getToken());
 		redisTemplate.expire(jwtToken.getToken(), 1,TimeUnit.HOURS);
@@ -47,12 +50,20 @@ public class LoginController {
 		
 		URI uri = null;
 		HttpHeaders headers = null;
+		ResponseEntity<?> responseEntity = null;
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("id", id);
+		
 		try {
-			uri = new URI("https://devapi-dxp.doosaninfracore.com/dxp/test");
+			uri = new URI("https://devapi-dxp.doosaninfracore.com/dxp/main");
 			//uri = new URI("http://www.naver.com");
 			headers = new HttpHeaders();
 			headers.set("Authorization", jwtToken.getToken());
 			headers.setLocation(uri);
+			responseEntity = ResponseEntity.status(HttpStatus.MOVED_PERMANENTLY)
+								.headers(headers)
+								.location(uri)
+								.body(map);
 			
 			System.out.println("TOKEN_VALUE3333333");
 		} catch (URISyntaxException e) {
@@ -60,6 +71,6 @@ public class LoginController {
 		}
 		
 		//return "redirect:/test";
-		return new ResponseEntity<>(headers,HttpStatus.MOVED_PERMANENTLY);
+		return responseEntity;
 	}
 }
