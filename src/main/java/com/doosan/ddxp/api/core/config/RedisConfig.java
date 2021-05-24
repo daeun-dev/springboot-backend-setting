@@ -1,5 +1,6 @@
 package com.doosan.ddxp.api.core.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -11,14 +12,17 @@ import org.springframework.data.redis.repository.configuration.EnableRedisReposi
 @EnableRedisRepositories
 public class RedisConfig {
 
-//	 	@Value("${spring.redis.host}")
-	    private String redisHostName="w-awps-di-an2-ecrds-dev-dxp.wimlsn.0001.apn2.cache.amazonaws.com";
+	 	@Value("${spring.redis.host}")
+	    private String redisHostName;
 
-//	    @Value("${spring.redis.port}")
-	    private int redisPort=6379;
+
+	    @Value("${spring.redis.port}")
+	    private int redisPort;
 
 	    @Bean
 	    public RedisConnectionFactory redisConnectionFactory() {
+	    	System.out.println("redisHostName :"+redisHostName);
+	    	System.out.println("redisPort :"+redisPort);
 	        return new LettuceConnectionFactory(redisHostName, redisPort);
 	    }
 

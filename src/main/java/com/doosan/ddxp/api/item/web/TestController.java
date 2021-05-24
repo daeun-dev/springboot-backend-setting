@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.doosan.ddxp.api.core.exception.BadRequestException;
@@ -34,7 +35,7 @@ public class TestController {
 	
 	@ResponseBody
 	@GetMapping(path = "/test-internationalized")
-	public String testInternationalized(Locale locale) {
+	public String testInternationalized(@RequestHeader(name="Accept-Language", required=false) Locale locale) {
 		return messageSource.getMessage("test.message", null, locale);
 	}
 	

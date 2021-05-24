@@ -1,4 +1,4 @@
-package com.doosan.ddxp.api.core.config.secuity;
+package com.doosan.ddxp.api.core.config.jwt;
 
 
 
@@ -24,9 +24,9 @@ public class JwtAuthToken {
         this.key = key;
     }
 
-    JwtAuthToken(Key key) {
+    JwtAuthToken(Key key, String id) {
     	 this.key = key;
-         this.token = createJwtAuthToken().get();
+         this.token = createJwtAuthToken(id).get();
     }
 
 //    JwtAuthToken(String subject, String id, Date expiredDate, Key key) {
@@ -34,10 +34,11 @@ public class JwtAuthToken {
 //        this.token = createJwtAuthToken(subject, id, expiredDate, role).get();
 //    }
 
-    private Optional<String> createJwtAuthToken() {
+    private Optional<String> createJwtAuthToken(String id) {
 		
         var token = Jwts.builder()
                 .signWith(key)
+                .claim("data", id) 										//계정정보
                 .compact();
 
         return Optional.ofNullable(token);

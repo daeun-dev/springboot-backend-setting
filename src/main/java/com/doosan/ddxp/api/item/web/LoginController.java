@@ -17,37 +17,31 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.doosan.ddxp.api.core.config.secuity.JwtAuthToken;
-import com.doosan.ddxp.api.core.config.secuity.JwtAuthTokenProvider;
+import com.doosan.ddxp.api.core.config.jwt.JwtAuthToken;
+import com.doosan.ddxp.api.core.config.jwt.JwtAuthTokenProvider;
 
 @Controller
 public class LoginController {
 
 	@Autowired
 	private RedisTemplate<String, Object> redisTemplate;
-	
+	@Autowired
+	JwtAuthTokenProvider jwtAuthTokenProvider;
 	
 	@GetMapping(path = "/login")
 	public ResponseEntity<?> login() {
 		
 		Logger logger = LoggerFactory.getLogger(LoginController.class);
-		
-		JwtAuthTokenProvider jwtAuthTokenProvider= new JwtAuthTokenProvider();
-		JwtAuthToken jwtToken = jwtAuthTokenProvider.createLoginAuthToken();
-		
 		String id = "ddxp";
+		
+		//jwtAuthTokenProvider= new JwtAuthTokenProvider();
+		JwtAuthToken jwtToken = jwtAuthTokenProvider.createLoginAuthToken(id);
+		
 		ValueOperations<String, Object> vop = redisTemplate.opsForValue();
 		vop.set(jwtToken.getToken(), id);
 		
-		System.out.println("TOKEN_VALUE111 :"+jwtToken.getToken());
-		redisTemplate.expire(jwtToken.getToken(), 1,TimeUnit.HOURS);
-		
-		System.out.println("TOKEN_VALUE22222222");
-		
-		String result = (String) vop.get(jwtToken.getToken());
-		System.out.println("AFTER_REDIS : "+result);
-		
-		
+		redisTemplate.expire(jwtToken.getToken(), 1,TimeUnit.HOURS);	
+		System.out.println("TOKEN_VALUE2222"+jwtToken.getToken());
 		URI uri = null;
 		HttpHeaders headers = null;
 		ResponseEntity<?> responseEntity = null;
@@ -56,7 +50,6 @@ public class LoginController {
 		
 		try {
 			uri = new URI("https://devapi-dxp.doosaninfracore.com/dxp/main");
-			//uri = new URI("http://www.naver.com");
 			headers = new HttpHeaders();
 			headers.add("Authorization", "Bearer "+jwtToken.getToken());
 			headers.setLocation(uri);
@@ -70,7 +63,6 @@ public class LoginController {
 			e.printStackTrace();
 		}
 		
-		//return "redirect:/test";
 		return responseEntity;
 	}
 }

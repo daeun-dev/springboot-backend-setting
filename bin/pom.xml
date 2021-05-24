@@ -17,10 +17,10 @@
 		<java.version>11</java.version>
 	</properties>
 	  <dependencies>
-	<dependency>
+		<!-- <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jdbc</artifactId>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-redis</artifactId>
@@ -43,16 +43,16 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>2.1.4</version>
-		</dependency>
-		<dependency>
+		</dependency> -->
+		<!-- <dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
 			<artifactId>ojdbc8</artifactId>
 			<scope>runtime</scope>
-		</dependency>
+		</dependency> -->
 		<dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-boot-starter</artifactId>
@@ -66,18 +66,15 @@
 		<dependency>
 		    <groupId>org.projectlombok</groupId>
 		    <artifactId>lombok</artifactId>
-		    <version>1.18.20</version>
         	<scope>provided</scope>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 		    <groupId>com.oracle.ojdbc</groupId>
 		    <artifactId>orai18n</artifactId>
-		    <version>19.3.0.0</version>
-		</dependency>
+		</dependency> -->
 		<dependency>
 		    <groupId>redis.clients</groupId>
 		    <artifactId>jedis</artifactId>
-		    <version>2.9.0</version>
 		</dependency>
 		<dependency>
 		    <groupId>io.jsonwebtoken</groupId>
@@ -97,22 +94,15 @@
 		    <scope>runtime</scope>
 		</dependency>
 		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-core</artifactId>
-		    <version>5.3.7</version>
-		</dependency>
-		<dependency>
 		    <groupId>com.google.code.gson</groupId>
 		    <artifactId>gson</artifactId>
-		    <version>2.8.6</version>
 		</dependency>
 
 
-		<!-- <dependency>
+		<dependency>
 		   <groupId>com.h2database</groupId>
 		   <artifactId>h2</artifactId>
-		   <version>1.4.200</version>
-		</dependency> -->
+		</dependency>
 	  </dependencies>
 
 	<build>
