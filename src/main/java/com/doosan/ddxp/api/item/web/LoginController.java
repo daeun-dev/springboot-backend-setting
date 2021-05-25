@@ -34,14 +34,22 @@ public class LoginController {
 		Logger logger = LoggerFactory.getLogger(LoginController.class);
 		String id = "ddxp";
 		
-		//jwtAuthTokenProvider= new JwtAuthTokenProvider();
+		/*
+		 * 
+		 * 
+		 * ID PW 유효성 체크및 DB 저장
+		 * 
+		 * 
+		 * */
+		
+		
 		JwtAuthToken jwtToken = jwtAuthTokenProvider.createLoginAuthToken(id);
 		
 		ValueOperations<String, Object> vop = redisTemplate.opsForValue();
 		vop.set(jwtToken.getToken(), id);
 		
 		redisTemplate.expire(jwtToken.getToken(), 1,TimeUnit.HOURS);	
-		System.out.println("TOKEN_VALUE2222"+jwtToken.getToken());
+		System.out.println("TOKEN_VALUE :"+jwtToken.getToken());
 		URI uri = null;
 		HttpHeaders headers = null;
 		ResponseEntity<?> responseEntity = null;
@@ -58,11 +66,17 @@ public class LoginController {
 								.location(uri)
 								.body(map);
 			
-			System.out.println("TOKEN_VALUE3333333");
+			System.out.println("TOKEN_VALUE3333");
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
 		
 		return responseEntity;
+	}
+	
+	@GetMapping(path = "/logout")
+	public void logout() {
+		
+		//redisTemplate.delete(jwtToken.getToken());
 	}
 }
