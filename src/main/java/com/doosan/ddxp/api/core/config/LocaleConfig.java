@@ -7,8 +7,8 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.i18n.FixedLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
-import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 public class LocaleConfig implements WebMvcConfigurer {
 
@@ -17,9 +17,11 @@ public class LocaleConfig implements WebMvcConfigurer {
 		registry.addInterceptor(localeChangeInterceptor());
 	}
 	
+	
 	@Bean
 	public LocaleResolver localeResolver() {
-		SessionLocaleResolver localeResolver = new SessionLocaleResolver();
+		//AcceptHeaderLocaleResolver localeResolver = new AcceptHeaderLocaleResolver();
+		FixedLocaleResolver localeResolver = new FixedLocaleResolver();
 		localeResolver.setDefaultLocale(Locale.ENGLISH);
 		return localeResolver;
 	}
@@ -27,7 +29,7 @@ public class LocaleConfig implements WebMvcConfigurer {
 	@Bean
 	public LocaleChangeInterceptor localeChangeInterceptor() {
 	      LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
-	      lci.setParamName("lang");
+	      lci.setParamName("lang"); // ?lang={언어코드} 변경가능
 	      return lci;
 	}
 	
