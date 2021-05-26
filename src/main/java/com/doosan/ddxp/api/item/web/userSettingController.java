@@ -15,7 +15,7 @@ public class userSettingController {
 		this.localeResolver =  localeResolver;
 	}
 	
-	@GetMapping(path = "/changeLocale")
+	@GetMapping("/changeLocale")
 	public void changeLocale(HttpServletRequest request) {
 		
 		String localeCode = request.getParameter("locale");

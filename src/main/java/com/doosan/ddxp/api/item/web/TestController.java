@@ -21,7 +21,7 @@ public class TestController {
 	//private ItemService itemService;
 	
 	@ResponseBody
-	@GetMapping(path = "/test")
+	@GetMapping("/test")
 	public String test() {
 //		Logger logger = LoggerFactory.getLogger(TestController.class);
 		
@@ -34,19 +34,19 @@ public class TestController {
 	}
 	
 	@ResponseBody
-	@GetMapping(path = "/test-internationalized")
+	@GetMapping("/test-internationalized")
 	public String testInternationalized(@RequestHeader(name="Accept-Language", required=false) Locale locale) {
 		return messageSource.getMessage("test.message", null, locale);
 	}
 	
 	@ResponseBody
-	@GetMapping(path = "/errorPage")
+	@GetMapping("/errorPage")
 	public void errorTest() throws Exception {
 				
 			throw new BadRequestException("badRequest!!");
 	}
 	
-	@GetMapping(path = "/testPage")
+	@GetMapping("/testPage")
 	public String testPage(){
 				
 			return "common/test";

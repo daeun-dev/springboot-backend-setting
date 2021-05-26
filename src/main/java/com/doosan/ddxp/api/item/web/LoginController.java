@@ -28,7 +28,7 @@ public class LoginController {
 	@Autowired
 	JwtAuthTokenProvider jwtAuthTokenProvider;
 	
-	@GetMapping(path = "/login")
+	@GetMapping("/login")
 	public ResponseEntity<?> login() {
 		
 		Logger logger = LoggerFactory.getLogger(LoginController.class);
@@ -74,7 +74,7 @@ public class LoginController {
 		return responseEntity;
 	}
 	
-	@GetMapping(path = "/logout")
+	@GetMapping("/logout")
 	public void logout() {
 		
 		//redisTemplate.delete(jwtToken.getToken());
